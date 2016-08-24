@@ -1,4 +1,12 @@
 $icon-font-path: '../fonts/';
+$dominant: #001a4d;
+$text-color: #d3d3d3;
+$item-bg: #a9a9a9;
+$bg-image-path: '../images/universe.jpg';
+$icon: '../images/planet-icon.png';
+$body-font-path: '../fonts/FiraSans/FiraSans-Medium';
+
+@include font-face(FiraSans-Medium, $body-font-path);
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
@@ -15,11 +23,16 @@ $icon-font-path: '../fonts/';
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: $dominant;
+  font-family: 'Times New Roman', Times, serif !important;
+  color: $text-color;
+  background: $item-bg url($bg-image-path) no-repeat;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
+.contact,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
@@ -60,7 +73,7 @@ body {
 }
 
 /* Supporting marketing content */
-.marketing {
+.marketing, .contact {
   margin: 40px 0;
   p + h4 {
     margin-top: 28px;
@@ -76,6 +89,7 @@ body {
   /* Remove the padding we set earlier */
   .header,
   .marketing,
+  .contact,
   .footer {
     padding-left: 0;
     padding-right: 0;
