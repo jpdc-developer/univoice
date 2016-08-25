@@ -5,8 +5,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Univoice ~ quantum-based decision making app</title>
-
+    
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="../bower_components/sweetalert/dist/sweetalert.css">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -29,39 +30,56 @@
     
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
+        <!--<ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">univoice2</h3>
+        </ul>-->
+        <div class="icon"><img src="images/planet-icon.png" alt="Celestial bodies">
+        <h3 class="text-muted">UNIVOICE</h3>
+        </div>
       </div>
 
       <div class="jumbotron">
-        <h1>Please type in your decision here</h1>
-        <p class="lead">The universe will help you choose your decision.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Add Decision</a></p>
+        <h1>Please type in a choice here</h1>
+        <p class="lead">A random choice will be chosen using random atmospheric noise.</p>
+        <label for="add">Add Choice:</label>
+        <br>
+        <input type="text" class="decision-field" id="decision-field">
+        <span class="action-button" onclick="add()"><a class="btn btn-lg btn-default" href="#">
+          <span class="glyphicon glyphicon-plus"></span>
+          Add Decision</a
+        ></span>
+        <span class="action-button" onclick="decide()"><a class="btn btn-lg btn-primary" href="#">
+          <span class="glyphicon glyphicon-play"></span>
+          DECIDE FOR ME!</a></span>
+        <div id="decision-list-container">
+        </div>
       </div>
 
       <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>How it works.</h4>
-          <p>It gets random numbers from the universe. Then using this random number, it chooses a decision for you.</p>
+        <div class="col-lg-6"><h4>Why</h4>
+          <p>Can't decide where to eat? Can't decide which phone to buy?</p>
+          <p>Which subject should you study first? Which show should you binge-watch first?</p>
+          <p>Don't let the paradox of choice slow get you down.</p>
+          <p>Lose all worry; let UNIVOICE pick a choice!</p>
         </div>
-         <div class="col-lg-6"><h4>Case Studies</h4>
-          <p>Don't know where to eat? Ask the universe! Don't know if you should skip leg day? Ask the universe!</p>
+        <div class="col-lg-6">
+          <h4>How</h4>
+          <p>It gets a random number from atmospheric noise data. All of your choices are assigned an id, and the choice whose id matches the random number is picked.</p>
+          <p>Simply add in all of your choices. Then click on <b>DECIDE FOR ME!</b> to pick a decision.</p>
         </div>
       </div>
 
       <div class="row contact"> 
         <div class="col-lg-12">
           <h4>Contact</h4>
-          <p>You can contact me by emailing univoice2@outlook.com</p>
+          <p>You can contact the UNIVOICE team by emailing univoice.universechoice@gmail.com</p>
         </div>
       </div>
 
       <div class="footer">
-        <p>♥ Disclaimer: I do not take responsibility for the actions that you decide to do as a result of this app. Please act responsibly.</p>
+        <p>☃ Disclaimer: I do not take responsibility for the actions that you decide to do as a result of this app. Please act responsibly.</p>
       </div>
     </div>
     
@@ -95,9 +113,12 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
+
+    <script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
     
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/ajax-call.js"></script>    
     <!-- endbuild -->
   </body>
 </html>

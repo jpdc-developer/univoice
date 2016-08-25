@@ -4,9 +4,15 @@ $text-color: #d3d3d3;
 $item-bg: #a9a9a9;
 $bg-image-path: '../images/universe.jpg';
 $icon: '../images/planet-icon.png';
-$body-font-path: '../fonts/FiraSans/FiraSans-Medium';
+$body-font-path: '../fonts/FiraSans/FiraSans-Regular.otf';
+$bg-jumbotron-path: '../images/space-dog.jpg';
 
-@include font-face(FiraSans-Medium, $body-font-path);
+
+// @include font-face(FiraSans-Medium, $body-font-path);
+@font-face{
+  font-family: FiraSans;
+  src: url($body-font-path);
+}
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
@@ -24,9 +30,19 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: $dominant;
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: FiraSans ,Helvetica, sans-serif;
   color: $text-color;
   background: $item-bg url($bg-image-path) no-repeat;
+  background-attachment: fixed;
+}
+
+// Make the input fields take the whole space
+input[type="text"], .decision-list-container  {
+     width: 100%; 
+     box-sizing: border-box;
+     -webkit-box-sizing:border-box;
+     -moz-box-sizing: border-box;
+     padding: 10px 20px 10px 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -42,12 +58,25 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
 
+  div {
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  }
+
+  .icon img {
+    padding-right: 10px;
+    display: inline-block;
+    padding-bottom: 20px;
+  }
+
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
-    padding-bottom: 19px;
+    font-weight: bold;
+    display: inline-block;
   }
 }
 
@@ -64,11 +93,29 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  color: #291512;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  margin-bottom: none;
+  background: #C9B6B3 url($bg-jumbotron-path) no-repeat bottom right;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  .decision-field {
+    padding-bottom: 10px;
+  }
+  .action-button {
+    width: 50%;
+    span {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
   .btn {
     font-size: 21px;
-    padding: 14px 24px;
+    margin: 20px;
   }
 }
 
@@ -83,7 +130,8 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    // max-width: 730px;
+    max-width: 900px;
   }
 
   /* Remove the padding we set earlier */
@@ -104,4 +152,6 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+
 }
