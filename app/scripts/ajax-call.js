@@ -20,8 +20,7 @@ function getRandomNumberFromAPI(numberOfChoices, callback) {
                 },
                 'id': 1
             }
-        ),
-        // processData: false
+        )
     })
         .done(function (data) {
             try { 
@@ -33,7 +32,7 @@ function getRandomNumberFromAPI(numberOfChoices, callback) {
             }
         })
         .fail(function (error) {
-            pageheader.innerHTML = 'Sorry, something went wrong. :( Try again in a bit?';
+            swal('An error has occured :( Here is the error message:\n' + error);
             console.log(error.getAllResponseHeaders());
         });
 }
@@ -43,12 +42,12 @@ function getNumberTriviaFromAPI(number, callback) {
     $.ajax({
         url: url,
         type: 'GET',
-    })
+        })
         .done(function (data) {
         callback(data);
         })
         .fail(function (error) {
-            pageheader.innerHTML = 'Sorry, something went wrong. :( Try again in a bit?';
+            swal('An error has occured :( Here is the error message:\n' + error);
             console.log(error.getAllResponseHeaders());
         });
 }
