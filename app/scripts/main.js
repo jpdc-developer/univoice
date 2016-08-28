@@ -29,10 +29,10 @@ function add (e) {
 }
 
 function updatePage(decision) {
-    $('#decision-list-container').append('<p id=\'list-preview\'' + decisions.length + '\' class=\'btn btn-info\' >' + decision.val() + '</p>');
+    $('#decision-list-container').append("<p id='list-preview" + decisions.length + "' class='btn btn-info' >" + decision.val() + '</p>');
     $('#list-preview' + decisions.length).hide();
+    $('#list-preview'  + decisions.length).fadeIn(500);
     $('#list-preview'  + decisions.length).css('visibility', 'visible');
-    $('#list-preview'  + decisions.length).slideDown();
     decision.val('');
 }
 
