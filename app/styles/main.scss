@@ -37,7 +37,7 @@ body {
 }
 
 // Make the input fields take the whole space
-input[type="text"], .decision-list-container  {
+input[type="text"], .choice-list-container  {
      width: 100%; 
      box-sizing: border-box;
      -webkit-box-sizing:border-box;
@@ -103,7 +103,7 @@ input[type="text"], .decision-list-container  {
   -o-background-size: cover;
   background-size: cover;
 
-  .decision-field {
+  .choice-field {
     padding-bottom: 10px;
   }
   .action-button {

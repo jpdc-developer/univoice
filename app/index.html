@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Univoice ~ quantum-based decision making app</title>
+    <title>Univoice ~ true-randomness-based decision-making /choice-picking app</title>
     
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -42,19 +42,19 @@
       </div>
 
       <div class="jumbotron">
-        <h1>Please type in a choice here</h1>
+        <h1>Please type a choice here</h1>
         <p class="lead">A random choice will be chosen using random atmospheric noise.</p>
         <label for="add">Add Choice:</label>
         <br>
-        <input type="text" class="decision-field" id="decision-field">
-        <span id="AddDecision" class="action-button"><a class="btn btn-lg btn-default" href="#">
+        <input id="choice-field" type="text" class="choice-field">
+        <span id="add-choice" class="action-button"><a class="btn btn-lg btn-default" href="#">
           <span class="glyphicon glyphicon-plus"></span>
-          Add Decision</a
+          Add Choice</a
         ></span>
-        <span id="Decide" class="action-button"><a class="btn btn-lg btn-primary" href="#">
+        <span id="choose" class="action-button"><a class="btn btn-lg btn-primary" href="#">
           <span class="glyphicon glyphicon-play"></span>
-          DECIDE FOR ME!</a></span>
-        <div id="decision-list-container">
+          CHOOSE FOR ME!</a></span>
+        <div id="choice-list-container">
         </div>
       </div>
 
@@ -68,7 +68,8 @@
         <div class="col-lg-6">
           <h4>How</h4>
           <p>It gets a random number from atmospheric noise data. All of your choices are assigned an id, and the choice whose id matches the random number is picked.</p>
-          <p>Simply add in all of your choices. Then click on <b>DECIDE FOR ME!</b> to pick a decision.</p>
+          <p>Simply add in all of your choices. Then click on <b>CHOOSE FOR ME!</b> to pick a choice.</p>
+          <p>You are also shown a cool "fun fact" about the number of your choice. Neat!</p>
         </div>
       </div>
 
