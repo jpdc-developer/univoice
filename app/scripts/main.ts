@@ -16,7 +16,7 @@ $('#choose').click(
         decide(e);
 });
 
-$('#choice-field').keyup(function (e): void {
+$('#choice-field').keyup(function (e: any): void {
     if (e.keyCode == 13) {
         add(e);
     }
@@ -47,9 +47,9 @@ function decide(e: any): void {
     if (choices.length <= 1) {
         swal('Please add more than 1 choices to choose from.');        
     } else {
-        getRandomNumberFromAPI(choices.length, function (number) {
+        getRandomNumberFromAPI(choices.length, function (number: number) {
             let choiceIndex: number = number-1;
-            getNumberTriviaFromAPI(number, function (fact) {
+            getNumberTriviaFromAPI(number, function (fact: any) {
                 // Present the data
                 let chosenNumber: string = 'Choice number '+ number + ' has been chosen:\t';
                 let chosenChoice: string = choices[choiceIndex];
