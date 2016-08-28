@@ -24,7 +24,6 @@ function getRandomNumberFromAPI(numberOfChoices, callback) {
         // processData: false
     })
         .done(function (data) {
-            // callback(JSON.parse(data)[0].jsonrpc);
             try { 
                 callback(data.result.random.data[0]);
             }
@@ -43,15 +42,10 @@ function getNumberTriviaFromAPI(number, callback) {
     var url = 'http://numbersapi.com/' + number + '/?json';
     $.ajax({
         url: url,
-        // beforeSend: function (xhrObj) {
-        //     // Request headers
-        //     xhrObj.setRequestHeader('Content-Type', 'application/json');
-        // },
         type: 'GET',
     })
         .done(function (data) {
         callback(data);
-            return data;
         })
         .fail(function (error) {
             pageheader.innerHTML = 'Sorry, something went wrong. :( Try again in a bit?';
