@@ -34,8 +34,10 @@ function decide() {
             var decisionIndex = number-1;
             getNumberTriviaFromAPI(number, function (fact) {
                 // Present the data
-                swal('Choice number '+ number + ' has been chosen:\n'
-                    + decisions[decisionIndex] + '\n\n' + 'Fun Fact\n' + fact.text);
+                var chosenNumber = 'Choice number '+ number + ' has been chosen:\t';
+                var chosenChoice = decisions[decisionIndex];
+                var chosenFact = fact.text;
+                swal(chosenNumber + chosenChoice,'Fun Fact:\t' + chosenFact);
                 cleanUp();
             });
         });
