@@ -34,8 +34,8 @@ function decide() {
             var decisionIndex = number-1;
             getNumberTriviaFromAPI(number, function (fact) {
                 // Present the data
-                swal("Choice number "+ number + " has been chosen:\n"
-                    + decisions[decisionIndex] + '\n\n' + "Fun Fact\n" + fact.text);
+                swal('Choice number '+ number + ' has been chosen:\n'
+                    + decisions[decisionIndex] + '\n\n' + 'Fun Fact\n' + fact.text);
                 cleanUp();
             });
         });

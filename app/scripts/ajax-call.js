@@ -40,7 +40,7 @@ function getRandomNumberFromAPI(numberOfChoices, callback) {
 }
 
 function getNumberTriviaFromAPI(number, callback) {
-    var url = "http://numbersapi.com/" + number + "/?json";
+    var url = 'http://numbersapi.com/' + number + '/?json';
     $.ajax({
         url: url,
         // beforeSend: function (xhrObj) {
