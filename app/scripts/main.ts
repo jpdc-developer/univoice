@@ -7,16 +7,16 @@ declare function swal(title: string, body: string):void;
 var decisions = []
 
 $('#AddDecision').click(
-    function (e) {
+    function (e: any): void {
         add(e);
 });
 
 $('#Decide').click(
-    function (e) {
+    function (e: any): void {
         decide(e);
 });
 
-$('#decision-field').keyup(function (e) {
+$('#decision-field').keyup(function (e): void {
     if (e.keyCode == 13) {
         add(e);
     }
@@ -24,8 +24,8 @@ $('#decision-field').keyup(function (e) {
 
 function add (e: any): void {
     e.preventDefault();
-        var decision = $('#decision-field');
-        var messageLength = decision.val().replace(/ /g,'').length;
+        let decision: any = $('#decision-field');
+        let messageLength: number = decision.val().replace(/ /g,'').length;
         if ( messageLength >0) {
             decisions.push(decision.val())
             updatePage(decision);
@@ -48,13 +48,12 @@ function decide(e: any): void {
         swal('Please add more than 1 choices to choose from.');        
     } else {
         getRandomNumberFromAPI(decisions.length, function (number) {
-            var fact;
-            var decisionIndex = number-1;
+            let decisionIndex: number = number-1;
             getNumberTriviaFromAPI(number, function (fact) {
                 // Present the data
-                var chosenNumber = 'Choice number '+ number + ' has been chosen:\t';
-                var chosenChoice = decisions[decisionIndex];
-                var chosenFact = fact.text;
+                let chosenNumber: string = 'Choice number '+ number + ' has been chosen:\t';
+                let chosenChoice: string = decisions[decisionIndex];
+                let chosenFact: string = fact.text;
                 swal(chosenNumber + chosenChoice,'Fun Fact:\t' + chosenFact);
                 cleanUp();
             });

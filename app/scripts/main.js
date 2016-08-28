@@ -37,7 +37,6 @@ function decide(e) {
     }
     else {
         getRandomNumberFromAPI(decisions.length, function (number) {
-            var fact;
             var decisionIndex = number - 1;
             getNumberTriviaFromAPI(number, function (fact) {
                 // Present the data
