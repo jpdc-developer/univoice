@@ -26,14 +26,18 @@ function getRandomNumberFromAPI(numberOfChoices, callback) {
             try { 
                 callback(data.result.random.data[0]);
             }
-            catch(err) {
-                swal('An error has occured :( Here is the error message:\n' + err);
+            catch(error) {
+                let errorMessage = error.message;
+                swal('An error has occured :( Here is the error message:\n' + errorMessage);
+                console.log(errorMessage)
                 cleanUp();    
             }
         })
         .fail(function (error) {
-            swal('An error has occured :( Here is the error message:\n' + error);
+            let errorMessage = error.message;
+            swal('An error has occured :( Here is the error message:\n' + errorMessage);
             console.log(error.getAllResponseHeaders());
+            console.log(errorMessage);
         });
 }
 
@@ -47,7 +51,9 @@ function getNumberTriviaFromAPI(number, callback) {
         callback(data);
         })
         .fail(function (error) {
-            swal('An error has occured :( Here is the error message:\n' + error);
+            let errorMessage = error.message;
+            swal('An error has occured :( Here is the error message:\n' + errorMessage);
             console.log(error.getAllResponseHeaders());
+            console.log(errorMessage);
         });
 }
