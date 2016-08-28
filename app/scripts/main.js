@@ -1,14 +1,31 @@
 var decisions = []
 
-function add() {
-    var decision = $('#decision-field');
-    var messageLength = decision.val().replace(/ /g,'').length;
-    if ( messageLength >0) {
-        decisions.push(decision.val())
-        updatePage(decision);
-    } else {
-        swal('Please type in a choice');
+$('#AddDecision').click(
+    function (e) {
+        add(e);
+});
+
+$('#Decide').click(
+    function (e) {
+        decide(e);
+});
+
+$('#decision-field').keyup(function (e) {
+    if (e.keyCode == 13) {
+        add(e);
     }
+});
+
+function add (e) {
+    e.preventDefault();
+        var decision = $('#decision-field');
+        var messageLength = decision.val().replace(/ /g,'').length;
+        if ( messageLength >0) {
+            decisions.push(decision.val())
+            updatePage(decision);
+        } else {
+            swal('Please type in a choice');
+        }
 }
 
 function updatePage(decision) {
@@ -19,13 +36,8 @@ function updatePage(decision) {
     decision.val('');
 }
 
-document.getElementById('decision-field').onkeyup = function(event) {
-    if (event.keyCode == 13) {
-        add();
-    }
-}
-
-function decide() {
+function decide(e) {
+    e.preventDefault();
     if (decisions.length <= 1) {
         swal('Please add more than 1 choices to choose from.');        
     } else {
