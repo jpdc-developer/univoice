@@ -29,11 +29,16 @@ function decide() {
     if (decisions.length <= 1) {
         swal('Please add more than 1 choices to choose from.');        
     } else {
-        getRandomNumberFromAPI(decisions.length, function (data) {
-        var decisionIndex = data-1;
-        swal(decisions[decisionIndex]);
-        cleanUp();
-    });    
+        getRandomNumberFromAPI(decisions.length, function (number) {
+            var fact;
+            var decisionIndex = number-1;
+            getNumberTriviaFromAPI(number, function (fact) {
+                // Present the data
+                swal("Choice number "+ number + " has been chosen:\n"
+                    + decisions[decisionIndex] + '\n\n' + "Fun Fact\n" + fact.text);
+                cleanUp();
+            });
+        });
     }
 }
 

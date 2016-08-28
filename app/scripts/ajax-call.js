@@ -38,3 +38,23 @@ function getRandomNumberFromAPI(numberOfChoices, callback) {
             console.log(error.getAllResponseHeaders());
         });
 }
+
+function getNumberTriviaFromAPI(number, callback) {
+    var url = "http://numbersapi.com/" + number + "/?json";
+    $.ajax({
+        url: url,
+        // beforeSend: function (xhrObj) {
+        //     // Request headers
+        //     xhrObj.setRequestHeader('Content-Type', 'application/json');
+        // },
+        type: 'GET',
+    })
+        .done(function (data) {
+        callback(data);
+            return data;
+        })
+        .fail(function (error) {
+            pageheader.innerHTML = 'Sorry, something went wrong. :( Try again in a bit?';
+            console.log(error.getAllResponseHeaders());
+        });
+}
