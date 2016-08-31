@@ -36,6 +36,11 @@ body {
   background-attachment: fixed;
 }
 
+#my-fb-comment-box{
+background: #fff no-repeat bottom right;
+margin-top: 20px;
+}
+
 // Make the input fields take the whole space
 input[type="text"], .choice-list-container  {
      width: 100%; 
@@ -167,6 +172,4 @@ input[type="text"], .choice-list-container  {
   .jumbotron {
     border-bottom: 0;
   }
-
-
 }
