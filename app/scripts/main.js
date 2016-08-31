@@ -24,6 +24,7 @@ function add(e) {
         }
     }
     else {
+        $('#choice-field').blur();
         retryInput();
     }
 }
@@ -45,6 +46,7 @@ function updatePage(choice) {
 }
 function decide(e) {
     e.preventDefault();
+    $('#choice-field').blur();
     if (choices.length <= 1) {
         swal({
             title: 'You don\'t have enough choices ...',
@@ -59,9 +61,10 @@ function decide(e) {
             var choiceIndex = number - 1;
             getNumberTriviaFromAPI(number, function (fact) {
                 // Present the data
-                var chosenNumber = 'Choice number ' + number + ' has been chosen:\t';
+                var chosenNumber = 'Choice #' + number + ' has been chosen:\t';
                 var chosenChoice = choices[choiceIndex];
                 var chosenFact = fact.text;
+                $('#choice-field').blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
             });

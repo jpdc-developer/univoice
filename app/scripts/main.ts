@@ -34,6 +34,7 @@ function add(e: any): void {
             alertify.success('Choice Added!');
         }
     } else {
+        $('#choice-field').blur();
         retryInput();
     }
 }
@@ -58,6 +59,7 @@ function updatePage(choice: any): void {
 
 function decide(e: any): void {
     e.preventDefault();
+    $('#choice-field').blur();
     if (choices.length <= 1) {
         swal({
         title: "You don't have enough choices ...",
@@ -71,9 +73,10 @@ function decide(e: any): void {
             let choiceIndex: number = number - 1;
             getNumberTriviaFromAPI(number, function (fact: any): void {
                 // Present the data
-                let chosenNumber: string = 'Choice number ' + number + ' has been chosen:\t';
+                let chosenNumber: string = 'Choice #' + number + ' has been chosen:\t';
                 let chosenChoice: string = choices[choiceIndex];
                 let chosenFact: string = fact.text;
+                $('#choice-field').blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
             });
