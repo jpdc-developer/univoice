@@ -73,6 +73,7 @@ function decide(e: any): void {
         cancelButtonText: "OK"
     });
     } else {
+        choose[0].style.pointerEvents = 'none';
         getRandomNumberFromAPI(choices.length, function (number: number): void {
             let choiceIndex: number = number - 1;
             getNumberTriviaFromAPI(number, function (fact: any): void {
@@ -83,6 +84,7 @@ function decide(e: any): void {
                 choiceField.blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
+                choose[0].style.pointerEvents = 'auto';
             });
         });
     }

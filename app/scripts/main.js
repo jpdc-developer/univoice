@@ -61,6 +61,7 @@ function decide(e) {
         });
     }
     else {
+        choose[0].style.pointerEvents = 'none';
         getRandomNumberFromAPI(choices.length, function (number) {
             var choiceIndex = number - 1;
             getNumberTriviaFromAPI(number, function (fact) {
@@ -71,6 +72,7 @@ function decide(e) {
                 choiceField.blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
+                choose[0].style.pointerEvents = 'auto';
             });
         });
     }
