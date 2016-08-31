@@ -4,7 +4,7 @@ declare function swal(title: string, body: string): void;
 declare var alertify: any;
 declare function success(message: string): void;
 
-var choices: string[] = []
+var choices: string[] = [];
 
 $('#add-choice').click(
     function (e: any): void {
@@ -29,7 +29,10 @@ function add(e: any): void {
     if (messageLength > 0) {
         choices.push(choice.val())
         updatePage(choice);
-        alertify.success('Choice Added!');
+        var width: number = $(window).width();
+        if (width>768) {
+            alertify.success('Choice Added!');
+        }
     } else {
         swal('Please type in a choice.');
     }

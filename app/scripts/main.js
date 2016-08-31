@@ -18,7 +18,10 @@ function add(e) {
     if (messageLength > 0) {
         choices.push(choice.val());
         updatePage(choice);
-        alertify.success('Choice Added!');
+        var width = $(window).width();
+        if (width > 768) {
+            alertify.success('Choice Added!');
+        }
     }
     else {
         swal('Please type in a choice.');
