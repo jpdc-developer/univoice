@@ -73,6 +73,7 @@ function decide(e: any): void {
         cancelButtonText: "OK"
     });
     } else {
+        addChoice[0].style.pointerEvents = 'none';
         choose[0].style.pointerEvents = 'none';
         getRandomNumberFromAPI(choices.length, function (number: number): void {
             let choiceIndex: number = number - 1;
@@ -84,6 +85,7 @@ function decide(e: any): void {
                 choiceField.blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
+                addChoice[0].style.pointerEvents = 'auto';
                 choose[0].style.pointerEvents = 'auto';
             });
         });

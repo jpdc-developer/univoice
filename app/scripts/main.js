@@ -61,6 +61,7 @@ function decide(e) {
         });
     }
     else {
+        addChoice[0].style.pointerEvents = 'none';
         choose[0].style.pointerEvents = 'none';
         getRandomNumberFromAPI(choices.length, function (number) {
             var choiceIndex = number - 1;
@@ -72,6 +73,7 @@ function decide(e) {
                 choiceField.blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
+                addChoice[0].style.pointerEvents = 'auto';
                 choose[0].style.pointerEvents = 'auto';
             });
         });
