@@ -1,8 +1,8 @@
 /// <reference path="typings/index.d.ts" />
-declare function getRandomNumberFromAPI(choiceLength: number, callback: any):void;
-declare function getNumberTriviaFromAPI(number: number, callback: any):void;
 declare function swal(title: string):void;
 declare function swal(title: string, body: string):void;
+declare var alertify: any;
+declare function success(message: string):void;
 
 var choices: string[] = []
 
@@ -29,6 +29,7 @@ function add (e: any): void {
         if ( messageLength >0) {
             choices.push(choice.val())
             updatePage(choice);
+            alertify.success('Choice Added!');
         } else {
             swal('Please type in a choice');
         }
@@ -65,4 +66,64 @@ function cleanUp(): void {
     choices = [];
     $('#choice-list-container').html('');
     $('#choice-field').val('');
+}
+
+function getRandomNumberFromAPI(numberOfChoices, callback) {
+    $.ajax({
+        url: 'https://api.random.org/json-rpc/1/invoke',
+        beforeSend: function (xhrObj) {
+            // Request headers
+            xhrObj.setRequestHeader('Content-Type', 'application/json-rpc');
+        },
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(
+            {
+                'jsonrpc': '2.0',
+                'method': 'generateIntegers',
+                'params': {
+                    'apiKey': '5c868d24-5e66-4927-942f-095abd761219',
+                    'n': 1,
+                    'min': 1,
+                    'max': numberOfChoices,
+                    'replacement': true
+                },
+                'id': 1
+            }
+        )
+    })
+        .done(function (data) {
+            try { 
+                callback(data.result.random.data[0]);
+            }
+            catch(error) {
+                let errorMessage = error.message;
+                swal('An error has occured :( Here is the error message:\n' + errorMessage);
+                console.log(errorMessage)
+                cleanUp();    
+            }
+        })
+        .fail(function (error) {
+            let errorMessage = error.message;
+            swal('An error has occured :( Here is the error message:\n' + errorMessage);
+            console.log(error.getAllResponseHeaders());
+            console.log(errorMessage);
+        });
+}
+
+function getNumberTriviaFromAPI(number, callback) {
+    var url = 'http://numbersapi.com/' + number + '/?json';
+    $.ajax({
+        url: url,
+        type: 'GET',
+        })
+        .done(function (data) {
+        callback(data);
+        })
+        .fail(function (error) {
+            let errorMessage = error.message;
+            swal('An error has occured :( Here is the error message:\n' + errorMessage);
+            console.log(error.getAllResponseHeaders());
+            console.log(errorMessage);
+        });
 }
