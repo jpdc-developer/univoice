@@ -1,5 +1,5 @@
 /// <reference path="typings/index.d.ts" />
-declare function swal(title: string): void;
+declare function swal(title: any): void;
 declare function swal(title: string, body: string): void;
 declare var alertify: any;
 declare function success(message: string): void;
@@ -34,8 +34,18 @@ function add(e: any): void {
             alertify.success('Choice Added!');
         }
     } else {
-        swal('Please type in a choice.');
+        retryInput();
     }
+}
+
+function retryInput(): void {
+    swal({
+        title: "Your choice is blank ...",
+        text: "Please type in a choice.",
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: "OK"
+    });
 }
 
 function updatePage(choice: any): void {
@@ -49,7 +59,13 @@ function updatePage(choice: any): void {
 function decide(e: any): void {
     e.preventDefault();
     if (choices.length <= 1) {
-        swal('Please add more than 1 choices to choose from.');
+        swal({
+        title: "You don't have enough choices ...",
+        text: "Please add more choices.",
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: "OK"
+    });
     } else {
         getRandomNumberFromAPI(choices.length, function (number: number): void {
             let choiceIndex: number = number - 1;
@@ -58,11 +74,22 @@ function decide(e: any): void {
                 let chosenNumber: string = 'Choice number ' + number + ' has been chosen:\t';
                 let chosenChoice: string = choices[choiceIndex];
                 let chosenFact: string = fact.text;
-                swal(chosenNumber + chosenChoice, 'Fun Fact:\t' + chosenFact);
+                showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
             });
         });
     }
+}
+
+function showChoiceAndFact(chosenNumber: string, chosenChoice: string, chosenFact: string): void {
+    // swal(chosenNumber + chosenChoice, 'Fun Fact:\t' + chosenFact);
+    swal({
+        title: chosenNumber + chosenChoice,
+        text: 'Fun Fact:\t' + chosenFact,
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: "OK"
+    });
 }
 
 function cleanUp(): void {
