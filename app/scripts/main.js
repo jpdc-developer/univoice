@@ -21,7 +21,7 @@ function add(e) {
         alertify.success('Choice Added!');
     }
     else {
-        swal('Please type in a choice');
+        swal('Please type in a choice.');
     }
 }
 function updatePage(choice) {
