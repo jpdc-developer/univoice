@@ -5,18 +5,22 @@ declare var alertify: any;
 declare function success(message: string): void;
 
 var choices: string[] = [];
+var addChoice = $('#add-choice');
+var choose = $('#choose');
+var choiceField = $('#choice-field');
+var choiceListContainer = $('#choice-list-container');
 
-$('#add-choice').click(
+addChoice.click(
     function (e: any): void {
         add(e);
     });
 
-$('#choose').click(
+choose.click(
     function (e: any): void {
         decide(e);
     });
 
-$('#choice-field').keyup(function (e: any): void {
+choiceField.keyup(function (e: any): void {
     if (e.keyCode == 13) {
         add(e);
     }
@@ -24,7 +28,7 @@ $('#choice-field').keyup(function (e: any): void {
 
 function add(e: any): void {
     e.preventDefault();
-    let choice: any = $('#choice-field');
+    let choice: any = choiceField;
     let messageLength: number = choice.val().replace(/ /g, '').length;
     if (messageLength > 0) {
         choices.push(choice.val())
@@ -34,7 +38,7 @@ function add(e: any): void {
             alertify.success('Choice Added!');
         }
     } else {
-        $('#choice-field').blur();
+        choiceField.blur();
         retryInput();
     }
 }
@@ -59,7 +63,7 @@ function updatePage(choice: any): void {
 
 function decide(e: any): void {
     e.preventDefault();
-    $('#choice-field').blur();
+    choiceField.blur();
     if (choices.length <= 1) {
         swal({
         title: "You don't have enough choices ...",
@@ -76,7 +80,7 @@ function decide(e: any): void {
                 let chosenNumber: string = 'Choice #' + number + ' has been chosen:\t';
                 let chosenChoice: string = choices[choiceIndex];
                 let chosenFact: string = fact.text;
-                $('#choice-field').blur();
+                choiceField.blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
             });
@@ -85,7 +89,6 @@ function decide(e: any): void {
 }
 
 function showChoiceAndFact(chosenNumber: string, chosenChoice: string, chosenFact: string): void {
-    // swal(chosenNumber + chosenChoice, 'Fun Fact:\t' + chosenFact);
     swal({
         title: chosenNumber + chosenChoice,
         text: 'Fun Fact:\t' + chosenFact,
@@ -97,8 +100,8 @@ function showChoiceAndFact(chosenNumber: string, chosenChoice: string, chosenFac
 
 function cleanUp(): void {
     choices = [];
-    $('#choice-list-container').html('');
-    $('#choice-field').val('');
+    choiceListContainer.html('');
+    choiceField.val('');
 }
 
 function getRandomNumberFromAPI(numberOfChoices: number, callback: any): void {

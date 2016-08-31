@@ -1,19 +1,23 @@
 /// <reference path="typings/index.d.ts" />
 var choices = [];
-$('#add-choice').click(function (e) {
+var addChoice = $('#add-choice');
+var choose = $('#choose');
+var choiceField = $('#choice-field');
+var choiceListContainer = $('#choice-list-container');
+addChoice.click(function (e) {
     add(e);
 });
-$('#choose').click(function (e) {
+choose.click(function (e) {
     decide(e);
 });
-$('#choice-field').keyup(function (e) {
+choiceField.keyup(function (e) {
     if (e.keyCode == 13) {
         add(e);
     }
 });
 function add(e) {
     e.preventDefault();
-    var choice = $('#choice-field');
+    var choice = choiceField;
     var messageLength = choice.val().replace(/ /g, '').length;
     if (messageLength > 0) {
         choices.push(choice.val());
@@ -24,17 +28,17 @@ function add(e) {
         }
     }
     else {
-        $('#choice-field').blur();
+        choiceField.blur();
         retryInput();
     }
 }
 function retryInput() {
     swal({
-        title: 'Your choice is blank ...',
-        text: 'Please type in a choice.',
+        title: "Your choice is blank ...",
+        text: "Please type in a choice.",
         showConfirmButton: false,
         showCancelButton: true,
-        cancelButtonText: 'OK'
+        cancelButtonText: "OK"
     });
 }
 function updatePage(choice) {
@@ -46,14 +50,14 @@ function updatePage(choice) {
 }
 function decide(e) {
     e.preventDefault();
-    $('#choice-field').blur();
+    choiceField.blur();
     if (choices.length <= 1) {
         swal({
-            title: 'You don\'t have enough choices ...',
-            text: 'Please add more choices.',
+            title: "You don't have enough choices ...",
+            text: "Please add more choices.",
             showConfirmButton: false,
             showCancelButton: true,
-            cancelButtonText: 'OK'
+            cancelButtonText: "OK"
         });
     }
     else {
@@ -64,7 +68,7 @@ function decide(e) {
                 var chosenNumber = 'Choice #' + number + ' has been chosen:\t';
                 var chosenChoice = choices[choiceIndex];
                 var chosenFact = fact.text;
-                $('#choice-field').blur();
+                choiceField.blur();
                 showChoiceAndFact(chosenNumber, chosenChoice, chosenFact);
                 cleanUp();
             });
@@ -72,19 +76,18 @@ function decide(e) {
     }
 }
 function showChoiceAndFact(chosenNumber, chosenChoice, chosenFact) {
-    // swal(chosenNumber + chosenChoice, 'Fun Fact:\t' + chosenFact);
     swal({
         title: chosenNumber + chosenChoice,
         text: 'Fun Fact:\t' + chosenFact,
         showConfirmButton: false,
         showCancelButton: true,
-        cancelButtonText: 'OK'
+        cancelButtonText: "OK"
     });
 }
 function cleanUp() {
     choices = [];
-    $('#choice-list-container').html('');
-    $('#choice-field').val('');
+    choiceListContainer.html('');
+    choiceField.val('');
 }
 function getRandomNumberFromAPI(numberOfChoices, callback) {
     $.ajax({
