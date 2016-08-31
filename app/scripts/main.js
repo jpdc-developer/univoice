@@ -34,11 +34,11 @@ function add(e) {
 }
 function retryInput() {
     swal({
-        title: "Your choice is blank ...",
-        text: "Please type in a choice.",
+        title: 'Your choice is blank ...',
+        text: 'Please type in a choice.',
         showConfirmButton: false,
         showCancelButton: true,
-        cancelButtonText: "OK"
+        cancelButtonText: 'OK'
     });
 }
 function updatePage(choice) {
@@ -53,11 +53,11 @@ function decide(e) {
     choiceField.blur();
     if (choices.length <= 1) {
         swal({
-            title: "You don't have enough choices ...",
-            text: "Please add more choices.",
+            title: 'You don\'t have enough choices ...',
+            text: 'Please add more choices.',
             showConfirmButton: false,
             showCancelButton: true,
-            cancelButtonText: "OK"
+            cancelButtonText: 'OK'
         });
     }
     else {
@@ -83,7 +83,7 @@ function showChoiceAndFact(chosenNumber, chosenChoice, chosenFact) {
         text: 'Fun Fact:\t' + chosenFact,
         showConfirmButton: false,
         showCancelButton: true,
-        cancelButtonText: "OK"
+        cancelButtonText: 'OK'
     });
 }
 function cleanUp() {
