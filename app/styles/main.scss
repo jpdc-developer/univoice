@@ -95,7 +95,7 @@ input[type="text"], .choice-list-container  {
   color: #291512;
   text-align: center;
   margin-bottom: none;
-  background: #C9B6B3 url($bg-jumbotron-path) no-repeat bottom right;
+  background: #8aacb8  url($bg-jumbotron-path) no-repeat bottom right;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -105,15 +105,32 @@ input[type="text"], .choice-list-container  {
     padding-bottom: 10px;
   }
   .action-button {
-    width: 50%;
-    span {
-      padding-left: 5px;
-      padding-right: 5px;
+    padding: 10px;
+      a {
+        width:100%;
+        font-size: 21px;
+        margin-top: 20px;
+        border: none;
+        color: #fff;
+      }
     }
+
+  #add-choice a {
+    background-color: #479030;
   }
-  .btn {
-    font-size: 21px;
-    margin: 20px;
+  #choose a{
+    background-color: #246D5F;
+  }
+
+  #add-choice a:active, #choose a:active{
+    color: #000;
+  }
+
+  .btn-info {
+    margin-right: 20px;
+    background-color: #000;
+    border-radius: 10px;
+    border: none;
   }
 }
 
