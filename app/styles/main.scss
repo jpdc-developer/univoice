@@ -111,6 +111,20 @@ input[type="text"], .choice-list-container  {
   .choice-field {
     padding-bottom: 10px;
   }
+
+  .spin
+{
+  // background: #444; /* outline */
+    height: 1px;
+    margin: 0px;
+    padding: 10px;
+  > *
+  {
+    background: #fff; /* hand */
+    height: 8px;
+  }
+}
+
   .action-button {
     padding: 10px;
       a {

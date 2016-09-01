@@ -4,6 +4,11 @@ var addChoice = $('#add-choice');
 var choose = $('#choose');
 var choiceField = $('#choice-field');
 var choiceListContainer = $('#choice-list-container');
+var spin = $('.spin');
+var chooseText = $('.choose-text');
+$(document).ready(function () {
+    spin.hide();
+});
 addChoice.click(function (e) {
     add(e);
 });
@@ -51,6 +56,8 @@ function updatePage(choice) {
 function decide(e) {
     e.preventDefault();
     choiceField.blur();
+    chooseText.hide();
+    spin.show();
     if (choices.length <= 1) {
         swal({
             title: 'You don\'t have enough choices ...',
@@ -92,6 +99,8 @@ function cleanUp() {
     choices = [];
     choiceListContainer.html('');
     choiceField.val('');
+    chooseText.show();
+    spin.hide();
 }
 function getRandomNumberFromAPI(numberOfChoices, callback) {
     $.ajax({
